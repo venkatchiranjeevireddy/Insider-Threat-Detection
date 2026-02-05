@@ -1,180 +1,166 @@
-🔐 TL INSIGHT
-Temporal Logic-Enhanced Spiking Graph Neural Network for Insider Threat Detection
-📌 Project Overview
+# 🔐 TL INSIGHT  
+### Temporal Logic-Enhanced Spiking Graph Neural Network for Insider Threat Detection
 
-Insider threats are among the most dangerous cybersecurity risks because they originate from users who already have authorized access to systems. Their actions often look normal at first glance, making detection extremely difficult using traditional rule-based or machine learning systems.
+---
 
-TL INSIGHT introduces a neuro-symbolic security framework that intelligently combines graph learning, spiking neural computation, and symbolic reasoning to detect insider threats with high accuracy and explainability.
+## 📖 Overview
 
-🎯 Key Goals
+Insider threats are among the most dangerous cybersecurity risks because they originate from users who already have authorized access to organizational systems. Their actions often appear normal, making detection extremely difficult using traditional rule-based or machine learning approaches.
 
-Identify hidden insider threats within normal user behavior
+**TL INSIGHT** introduces a **neuro-symbolic insider threat detection framework** that combines **graph learning**, **spiking neural networks**, and **symbolic reasoning** to detect insider threats with high accuracy and improved explainability.
 
-Capture temporal behavior patterns over time
+---
 
-Learn relationships between user activities
+## 🎯 Key Objectives
 
-Handle extreme class imbalance in security datasets
+- Identify hidden insider threats within normal user behavior  
+- Capture temporal behavior patterns over time  
+- Learn relationships between user activities  
+- Handle extreme class imbalance in insider threat datasets  
+- Reduce false negatives, which are critical in cybersecurity  
 
-Minimize false negatives, which are critical in cybersecurity
+---
 
-Provide interpretable and explainable results
+## 🧠 Core Idea
 
-🧠 Core Idea (What Makes It Special?)
+Insider threats are rarely single events. They evolve over time, involve multiple actions, and follow logical patterns.
 
-TL INSIGHT is built on the idea that insider threats are not isolated events — they evolve over time, across related activities, and often follow logical patterns.
+TL INSIGHT addresses this by integrating:
 
-To address this, the system integrates:
+- 🕸 **Graph Neural Networks (GNNs)** to model relationships  
+- ⚡ **Spiking Neural Networks (SNNs)** to model temporal behavior  
+- 📜 **Symbolic Rules** to inject domain knowledge  
+- 🎯 **Focal Loss** to focus learning on rare insider threats  
 
-🕸 Graph Neural Networks (GNNs) → model relationships
+---
 
-⚡ Spiking Neural Networks (SNNs) → model temporal behavior
+## 📂 Dataset
 
-📜 Symbolic Rules → inject human expertise
+- **CERT r5.2 Insider Threat Dataset**
+- Enterprise-scale user activity logs
+- Highly imbalanced with very few insider threat samples
 
-🎯 Focal Loss → focus learning on rare insider cases
+### Label Mapping
 
-📂 Dataset Used
+- Class 0 → Normal Activity  
+- Classes 1–4 → Insider Threat  
 
-CERT r5.2 Insider Threat Dataset
+Converted into binary classification:
 
-Realistic enterprise user activity logs
+- `0` → Non-Threat  
+- `1` → Threat  
 
-Highly imbalanced (very few insider threat cases)
+---
 
-🔖 Label Definition
+## 🏗 System Architecture
 
-Class 0 → Normal user activity
+The TL INSIGHT pipeline follows these steps:
 
-Classes 1–4 → Insider threat activity
+1. **Feature Engineering**
+   - Numerical behavior features  
+   - Symbolic Boolean rules  
 
-For practical deployment, the task is converted into binary classification:
+2. **Data Standardization**
+   - Feature normalization  
 
-0 → Non-Threat
+3. **Similarity Graph Construction**
+   - Nodes represent activity samples  
+   - Edges created using cosine similarity  
 
-1 → Threat
+4. **Spiking Graph Neural Network**
+   - GCN layers for relational learning  
+   - Spiking neurons for temporal modeling  
 
-🏗 System Architecture (Workflow)
+5. **Threat Classification**
+   - Outputs threat probability  
 
-1️⃣ Feature Engineering
+6. **Threshold Optimization**
+   - Adjusted to minimize false negatives  
 
-Numerical behavior features
+7. **Evaluation**
+   - Classification report  
+   - Confusion matrix  
 
-Domain-based symbolic rules
+---
 
-2️⃣ Data Standardization
+## 📜 Symbolic Rule Integration
 
-Normalization for stable learning
+Symbolic rules represent expert cybersecurity knowledge such as:
 
-3️⃣ Similarity Graph Construction
+- Unusual access times  
+- Suspicious file or device usage  
+- Abnormal activity sequences  
 
-Nodes = user activity samples
+Each rule outputs a binary value (0 or 1), which is combined with numerical features.  
+This improves both **performance** and **interpretability**.
 
-Edges = cosine similarity above threshold
+---
 
-4️⃣ Spiking Graph Neural Network
+## ⚡ Spiking Graph Neural Network (S-GNN)
 
-GCN layers learn structural patterns
+- Spiking neurons process information over time  
+- Focus on persistent suspicious behavior  
+- Ignore short-term noise  
+- Inspired by biological neural systems  
 
-Spiking neurons capture temporal behavior
+The GNN captures **relationships**, while the SNN captures **temporal evolution** of insider behavior.
 
-5️⃣ Threat Classification
+---
 
-Outputs threat probability
+## ⚖ Handling Class Imbalance
 
-6️⃣ Threshold Optimization
+TL INSIGHT addresses imbalance using:
 
-Adjusts decision boundary to reduce false negatives
+- **Focal Loss** to focus on hard-to-detect samples  
+- **Class weighting** to penalize missed threats  
+- **Majority class down-sampling** for balanced learning  
 
-7️⃣ Evaluation & Reporting
+---
 
-Classification report
+## 🎚 Threshold Optimization
 
-Confusion matrix
+Instead of using a fixed probability threshold:
 
-📜 Symbolic Rule Injection
+- Threshold is tuned after training  
+- Focus is on reducing false negatives  
+- Aligns with real-world security requirements  
 
-To improve interpretability, TL INSIGHT integrates symbolic Boolean rules derived from cybersecurity knowledge, such as:
+---
 
-Unusual access timings
+## 📊 Results Summary
 
-Suspicious file or device usage
+- ROC-AUC: **96.5%**  
+- Improved insider threat recall  
+- Reduced false negatives  
+- Stable training without overfitting  
+- Strong performance on reduced datasets  
 
-Abnormal activity combinations
+---
 
-Each rule outputs 0 or 1, which is combined with numerical features.
-This makes the system both data-driven and logic-aware.
+## 🌟 Key Advantages
 
-⚡ Spiking Graph Neural Network (S-GNN)
+- Combines temporal, relational, and logical reasoning  
+- Explainable and interpretable predictions  
+- Robust to highly imbalanced data  
+- Suitable for enterprise cybersecurity systems  
 
-Unlike traditional neural networks, spiking neurons process data over time, similar to biological brains.
+---
 
-Why this matters:
+## 🏢 Applications
 
-Captures slow-evolving insider attacks
+- Insider Threat Detection Systems  
+- Security Operations Centers (SOC)  
+- User Behavior Analytics  
+- Cyber Risk Monitoring  
 
-Ignores short-term noise
+---
 
-Focuses on persistent suspicious behavior
+## 🧾 Conclusion
 
-The GNN captures who is related to whom, while the SNN captures when behavior becomes suspicious.
+TL INSIGHT presents a hybrid neuro-symbolic framework that integrates symbolic reasoning, spiking neural computation, and graph deep learning to effectively detect insider threats. The approach overcomes major limitations of traditional ML and DL models, making it suitable for modern enterprise cybersecurity environments.
 
-⚖ Handling Class Imbalance
+---
 
-Insider threat data is extremely skewed. TL INSIGHT addresses this using:
+## 🔑 Keywords
 
-🎯 Focal Loss → focuses on hard-to-detect insider samples
-
-⚖ Class weighting → penalizes missed threats
-
-🔽 Majority class down-sampling → improves learning balance
-
-🎚 Threshold Optimization
-
-Instead of using a fixed decision threshold:
-
-The threshold is tuned after training
-
-Focus is on minimizing false negatives
-
-This aligns with real-world security priorities
-
-📊 Experimental Results
-
-🚀 ROC-AUC: 96.5%
-
-Strong improvement in insider threat recall
-
-Significant reduction in false negatives
-
-Stable training without overfitting
-
-Balanced performance on reduced datasets
-
-🌟 Key Advantages
-
-✅ Temporal + relational + logical learning
-
-✅ Explainable and interpretable predictions
-
-✅ Robust to highly imbalanced data
-
-✅ Suitable for real-world enterprise security
-
-✅ Inspired by biological neural systems
-
-🏢 Applications
-
-Enterprise Insider Threat Detection
-
-Security Operations Centers (SOC)
-
-User Behavior Analytics (UBA)
-
-Cyber Risk Monitoring Systems
-
-🧾 Conclusion
-
-TL INSIGHT presents a powerful and explainable insider threat detection framework by integrating symbolic logic, spiking neural computation, and graph deep learning. It overcomes key limitations of traditional ML and DL systems, making it well-suited for modern enterprise cybersecurity environments.
-
-Future extensions may include real-time deployment, automated rule discovery, and expansion to other anomaly detection domains.
+Insider Threat Detection, Spiking Neural Networks, Graph Neural Networks, Neuro-Symbolic AI, Focal Loss, Cybersecurity
