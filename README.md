@@ -153,14 +153,6 @@ Instead of using a fixed probability threshold:
 - User Behavior Analytics  
 - Cyber Risk Monitoring  
 
----
 
-## 🧾 Conclusion
-
-TL INSIGHT presents a hybrid neuro-symbolic framework that integrates symbolic reasoning, spiking neural computation, and graph deep learning to effectively detect insider threats. The approach overcomes major limitations of traditional ML and DL models, making it suitable for modern enterprise cybersecurity environments.
-
----
-
-## 🔑 Keywords
 
 Insider Threat Detection, Spiking Neural Networks, Graph Neural Networks, Neuro-Symbolic AI, Focal Loss, Cybersecurity
